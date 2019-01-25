@@ -16,6 +16,12 @@
 		845BF88A21FA975A000F211C /* PlumeWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BF88921FA975A000F211C /* PlumeWeatherTests.swift */; };
 		845BF89521FA975A000F211C /* PlumeWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BF89421FA975A000F211C /* PlumeWeatherUITests.swift */; };
 		845BF8A321FA9FC4000F211C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 845BF8A221FA9FC4000F211C /* Podfile */; };
+		845BF8A621FB1374000F211C /* YahooWeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BF8A521FB1374000F211C /* YahooWeatherResponse.swift */; };
+		845BF8A921FB20C3000F211C /* WeatherRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BF8A821FB20C3000F211C /* WeatherRequestController.swift */; };
+		845BF8AC21FB2345000F211C /* WeatherRequestUIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BF8AB21FB2345000F211C /* WeatherRequestUIController.swift */; };
+		845BF8AF21FB2959000F211C /* ScrollingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BF8AE21FB2959000F211C /* ScrollingLabel.swift */; };
+		845BF8B321FB2AF9000F211C /* DataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BF8B221FB2AF9000F211C /* DataResult.swift */; };
+		845BF8B521FB2BD5000F211C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BF8B421FB2BD5000F211C /* Error.swift */; };
 		A1D4910F6D3F82B58141DC44 /* Pods_PlumeWeatherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C6149CD9F28DFBD4862A9E /* Pods_PlumeWeatherUITests.framework */; };
 		CACF93DF0664BFB08882F188 /* Pods_PlumeWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E08234A91601AE93D46B9F /* Pods_PlumeWeather.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +66,12 @@
 		845BF89421FA975A000F211C /* PlumeWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlumeWeatherUITests.swift; sourceTree = "<group>"; };
 		845BF89621FA975A000F211C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		845BF8A221FA9FC4000F211C /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		845BF8A521FB1374000F211C /* YahooWeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooWeatherResponse.swift; sourceTree = "<group>"; };
+		845BF8A821FB20C3000F211C /* WeatherRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequestController.swift; sourceTree = "<group>"; };
+		845BF8AB21FB2345000F211C /* WeatherRequestUIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequestUIController.swift; sourceTree = "<group>"; };
+		845BF8AE21FB2959000F211C /* ScrollingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingLabel.swift; sourceTree = "<group>"; };
+		845BF8B221FB2AF9000F211C /* DataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResult.swift; sourceTree = "<group>"; };
+		845BF8B421FB2BD5000F211C /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		C0E08234A91601AE93D46B9F /* Pods_PlumeWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlumeWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -140,11 +152,12 @@
 		845BF87321FA9758000F211C /* PlumeWeather */ = {
 			isa = PBXGroup;
 			children = (
+				845BF8B021FB2A5D000F211C /* ViewControllers */,
+				845BF8A721FB13B1000F211C /* Components */,
 				845BF87421FA9758000F211C /* AppDelegate.swift */,
-				845BF87621FA9758000F211C /* ViewController.swift */,
 				845BF87821FA9758000F211C /* Main.storyboard */,
-				845BF87B21FA975A000F211C /* Assets.xcassets */,
 				845BF87D21FA975A000F211C /* LaunchScreen.storyboard */,
+				845BF87B21FA975A000F211C /* Assets.xcassets */,
 				845BF88021FA975A000F211C /* Info.plist */,
 			);
 			path = PlumeWeather;
@@ -166,6 +179,59 @@
 				845BF89621FA975A000F211C /* Info.plist */,
 			);
 			path = PlumeWeatherUITests;
+			sourceTree = "<group>";
+		};
+		845BF8A421FB1353000F211C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				845BF8A521FB1374000F211C /* YahooWeatherResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		845BF8A721FB13B1000F211C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				845BF8B121FB2AE9000F211C /* Result */,
+				845BF8AD21FB2849000F211C /* UI */,
+				845BF8AA21FB20CC000F211C /* WeatherRequests */,
+				845BF8A421FB1353000F211C /* Model */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		845BF8AA21FB20CC000F211C /* WeatherRequests */ = {
+			isa = PBXGroup;
+			children = (
+				845BF8A821FB20C3000F211C /* WeatherRequestController.swift */,
+				845BF8AB21FB2345000F211C /* WeatherRequestUIController.swift */,
+			);
+			path = WeatherRequests;
+			sourceTree = "<group>";
+		};
+		845BF8AD21FB2849000F211C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				845BF8AE21FB2959000F211C /* ScrollingLabel.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		845BF8B021FB2A5D000F211C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				845BF87621FA9758000F211C /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		845BF8B121FB2AE9000F211C /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				845BF8B221FB2AF9000F211C /* DataResult.swift */,
+				845BF8B421FB2BD5000F211C /* Error.swift */,
+			);
+			path = Result;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,7 +449,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845BF8AF21FB2959000F211C /* ScrollingLabel.swift in Sources */,
+				845BF8AC21FB2345000F211C /* WeatherRequestUIController.swift in Sources */,
 				845BF87721FA9758000F211C /* ViewController.swift in Sources */,
+				845BF8A621FB1374000F211C /* YahooWeatherResponse.swift in Sources */,
+				845BF8B321FB2AF9000F211C /* DataResult.swift in Sources */,
+				845BF8A921FB20C3000F211C /* WeatherRequestController.swift in Sources */,
+				845BF8B521FB2BD5000F211C /* Error.swift in Sources */,
 				845BF87521FA9758000F211C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
