@@ -1,0 +1,16 @@
+platform :ios, '9.0'
+
+target 'PlumeWeather' do
+
+  use_frameworks!
+  pod 'AFNetworking', '~> 3.0'
+
+  target 'PlumeWeatherTests' do
+    inherit! :search_paths
+  end
+
+  target 'PlumeWeatherUITests' do
+    inherit! :search_paths
+  end
+
+end
