@@ -22,16 +22,20 @@ class WeatherRequestUIController: WeatherRequestDelegate {
     }
     
     private var view:UIView!
-    private var temperatureLabel:UILabel!
+    private var temperatureLabel:ScrollingLabelView!
+    private var cityLabel:UILabel!
     
-    init(view:UIView, temperatureLabel:UILabel) {
+    init(view:UIView, temperatureLabel:ScrollingLabelView, cityLabel:UILabel) {
         self.view = view
         self.temperatureLabel = temperatureLabel
+        self.cityLabel = cityLabel
     }
     
     func updateUI() {
-        guard let temperature = currentWeatherData?.current_observation.condition.temperature else { return }
+        guard let temperature = currentWeatherData?.current_observation.condition.temperature else { /*handle error*/ return }
+        guard let city = currentWeatherData?.location.city else { /*handle error*/ return }
         
-        self.temperatureLabel.text = String(format: "%d°F", temperature)
+        self.temperatureLabel.value = temperature //String(format: "%d", temperature)
+        self.cityLabel.text = city
     }
 }

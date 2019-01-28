@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sessionManager = SessionManager.default
         sessionManager.adapter = oauthSwift.requestAdapter
         
+        application.statusBarStyle = .lightContent
+        
         return true
     }
 
