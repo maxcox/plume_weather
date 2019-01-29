@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 import Alamofire
 import OAuthSwift
 
@@ -15,42 +16,66 @@ protocol WeatherRequestDelegate {
     var currentWeatherData:YahooWeatherResponse? { get set }
 }
 
-final class WeatherRequestController {
+final class WeatherRequestController: PlumeLocationDelegate {
     
     var delegate:WeatherRequestDelegate?
     
-    init() {
+    var refreshTimer:Timer?
+    
+    let defaultLocation = "location=sunnyvale,ca"
+    var lastLocation:CLLocation? {
+        didSet {
+            refreshWeather()
+        }
     }
     
-    func refreshWeather() {
+    @objc func refreshWeather() {
         
-        let testLocation = "sunnyvale,ca"
+        let location = lastLocation?.coordinatesHTTPString("lat", "long") ?? defaultLocation
         
-        weatherRequest(location: testLocation)
+        weatherRequest(location: location)
     }
     
     private func weatherRequest(location:String) {
         
         let sessionManager = SessionManager.default
         
-        let dataRequest:DataRequest = sessionManager.request(URL(string: "https://weather-ydn-yql.media.yahoo.com/forecastrss?location=\(location)&format=json")!, headers: ["Yahoo-App-Id":"woarXb78"])
+        let dataRequest:DataRequest = sessionManager.request(URL(string: "https://weather-ydn-yql.media.yahoo.com/forecastrss?\(location)&format=json")!, headers: ["Yahoo-App-Id":"woarXb78"])
         
         dataRequest.responseJSON { (dataResponse) in
             
-            guard dataResponse.result.isSuccess else { print(dataResponse.error); return}
+            guard dataResponse.result.isSuccess else {
+                print(dataResponse.error);
+                return
+            }
             
             var weatherData:YahooWeatherResponse
             
             do {
                 weatherData = try JSONDecoder().decode(YahooWeatherResponse.self, from: dataResponse.data!)
-            } catch {
-                print("Parsing error.")
+            } catch let parsingError {
+                print(parsingError)
                 return
             }
             
             if (self.delegate != nil) {
                 self.delegate?.currentWeatherData = weatherData
             }
+        }
+    }
+    
+    //MARK: - Refresh Timer Methods
+    
+    func startRefresh() {
+        if (refreshTimer == nil) {
+            refreshTimer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(refreshWeather), userInfo: nil, repeats: true)
+        }
+    }
+    
+    func stopRefresh() {
+        if (refreshTimer != nil) {
+            refreshTimer?.invalidate()
+            refreshTimer = nil
         }
     }
 }
