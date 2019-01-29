@@ -20,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        //FIXME: Place the details of oauth initialization somewhere else
-        
         //FIXME: Hide API Keys
         let yahooAPIConsumerKey:String = "dj0yJmk9TVpXcGFTTVU0Qmt4JnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PWRk"
         let yahooAPIConsumerSecret:String = "922b95749d3bcaee995a586fc8b1255026d74fa4"

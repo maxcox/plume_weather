@@ -17,7 +17,7 @@ class PlumeLocationHandler: NSObject, CLLocationManagerDelegate {
     
     weak var delegate:PlumeLocationDelegate?
     
-    var locationManager:CLLocationManager!
+    let locationManager:CLLocationManager
     
     override init() {
         locationManager = CLLocationManager()
@@ -25,7 +25,6 @@ class PlumeLocationHandler: NSObject, CLLocationManagerDelegate {
         super.init()
         
         locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
     }
     
     private func setupLocationUpdates() {
@@ -44,6 +43,9 @@ class PlumeLocationHandler: NSObject, CLLocationManagerDelegate {
         case .authorizedWhenInUse, .authorizedAlways:
             setupLocationUpdates()
             manager.startUpdatingLocation()
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
             break
         default:
             break

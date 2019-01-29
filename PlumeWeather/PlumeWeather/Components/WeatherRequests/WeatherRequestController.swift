@@ -23,6 +23,7 @@ final class WeatherRequestController: PlumeLocationDelegate {
     var refreshTimer:Timer?
     
     let defaultLocation = "location=sunnyvale,ca"
+    
     var lastLocation:CLLocation? {
         didSet {
             refreshWeather()
