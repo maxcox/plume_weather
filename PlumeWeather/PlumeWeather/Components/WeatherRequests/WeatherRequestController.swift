@@ -49,7 +49,7 @@ final class WeatherRequestController: PlumeLocationDelegate {
                 return
             }
             
-            var weatherData:YahooWeatherResponse
+            let weatherData:YahooWeatherResponse
             
             do {
                 weatherData = try JSONDecoder().decode(YahooWeatherResponse.self, from: dataResponse.data!)

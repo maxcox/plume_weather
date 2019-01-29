@@ -25,7 +25,7 @@ class ScrollingValueUIController: ScrollableAnimatorDelegate {
         }
     }
     
-    private var text:String = "  0" {
+    private var text:String = "   " {
         didSet {
             updateLabels(with: labelValuesArray(for: text))
         }
@@ -36,6 +36,8 @@ class ScrollingValueUIController: ScrollableAnimatorDelegate {
     
     init(labels: [VerticalCharacterLabel]) {
         self.labels = labels
+        
+        updateLabels(with: [" ", " ", " ", "0"], force: true)
     }
     
     private func labelValuesArray(for display:String) -> [String] {
@@ -53,10 +55,13 @@ class ScrollingValueUIController: ScrollableAnimatorDelegate {
         return labelValues.reversed()
     }
     
-    private func updateLabels(with values:[String]) {
+    private func updateLabels(with values:[String], force: Bool = false) {
         let zipped = zip(labels, values)
         _ = zipped.map { (label, value) -> Void in
             label.newCharacter = value
+            if (force) {
+                label.scrolling = false
+            }
         }
     }
     

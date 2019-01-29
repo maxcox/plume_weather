@@ -19,11 +19,14 @@ class VerticalScrollingAnimator: ScrollableAnimator {
         
         if (direction == .none || scrollable.scrollCenter == nil) {  scrollable.scrolling = false; return }
         
+        //Reset scrollable at scroll center
         let scrollCenterY:CGFloat = scrollable.scrollCenter!.y
         scrollable.center.y = scrollCenterY
         scrollable.scrolling = true
         
-        UIView.animate(withDuration: TimeInterval(1/currentScrollSpeed), delay: 0, options: .curveLinear, animations: {
+        let animationDuration:TimeInterval = TimeInterval(1/currentScrollSpeed)
+        
+        UIView.animate(withDuration: animationDuration, delay: 0, options: .curveLinear, animations: {
             scrollable.center.y = scrollCenterY - cycleLength * CGFloat(direction.value())
         }) { (completed) in
             

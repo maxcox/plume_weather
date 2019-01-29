@@ -49,5 +49,9 @@ class TemperatureViewController: UIViewController {
         super.viewWillDisappear(animated)
         weatherRequestController.stopRefresh()
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
