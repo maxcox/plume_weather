@@ -31,7 +31,7 @@ final class WeatherRequestController: PlumeLocationDelegate {
     
     @objc func refreshWeather() {
         
-        let location = lastLocation?.coordinatesHTTPString("lat", "long") ?? defaultLocation
+        let location = lastLocation?.coordinatesHTTPString("lat", "lon") ?? defaultLocation
         
         weatherRequest(location: location)
     }
