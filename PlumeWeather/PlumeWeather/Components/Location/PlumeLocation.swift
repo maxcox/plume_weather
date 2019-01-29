@@ -36,7 +36,7 @@ class PlumeLocationHandler: NSObject, CLLocationManagerDelegate {
     //MARK: - CLLocationManager Delegate Methods
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Location issue reported: \(error)")
+        print("Location manager error: \(error)")
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

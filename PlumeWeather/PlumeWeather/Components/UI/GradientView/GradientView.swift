@@ -46,9 +46,7 @@ import QuartzCore
     }
     
     func commonInit() {
-        gradientLayer.colors = [colorA, colorB].map { $0.cgColor }
-        gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = bounds
+        updateGradientLayer()
         
         backgroundColor = UIColor.clear
         layer.insertSublayer(gradientLayer, at: 0)

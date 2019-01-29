@@ -31,14 +31,13 @@ class WeatherRequestUIController: WeatherRequestDelegate {
         self.cityLabel = cityLabel
     }
     
-    func updateUI() {
-        guard let weatherData:YahooWeatherResponse = currentWeatherData else { /*handle error*/ return }
+    private func updateUI() {
+        guard let weatherData:YahooWeatherResponse = currentWeatherData else { print("Attempting to update UI with no valid weather data."); return }
         
         let temperature = weatherData.current_observation.condition.temperature
         let city = weatherData.location.city
         
-        //FIXME: Some test code below
-        self.temperatureLabel.value = temperature + Int(arc4random_uniform(11)) - 5
+        self.temperatureLabel.value = temperature
         self.cityLabel.text = city
     }
 }

@@ -40,12 +40,12 @@ final class WeatherRequestController: PlumeLocationDelegate {
         
         let sessionManager = SessionManager.default
         
-        let dataRequest:DataRequest = sessionManager.request(URL(string: "https://weather-ydn-yql.media.yahoo.com/forecastrss?\(location)&format=json")!, headers: ["Yahoo-App-Id":"woarXb78"])
-        
-        dataRequest.responseJSON { (dataResponse) in
+        sessionManager.request(URL(string: "https://weather-ydn-yql.media.yahoo.com/forecastrss?\(location)&format=json")!, headers: ["Yahoo-App-Id":"woarXb78"])
+        .validate()
+        .responseJSON { (dataResponse) in
             
             guard dataResponse.result.isSuccess else {
-                print(dataResponse.error);
+                print("Error while fetching local weather data: \(String(describing: dataResponse.result.error))");
                 return
             }
             
@@ -54,7 +54,7 @@ final class WeatherRequestController: PlumeLocationDelegate {
             do {
                 weatherData = try JSONDecoder().decode(YahooWeatherResponse.self, from: dataResponse.data!)
             } catch let parsingError {
-                print(parsingError)
+                print("Data parsing unsuccessful with error: \(parsingError)")
                 return
             }
             
