@@ -12,6 +12,8 @@ import OAuthSwift
 import OAuthSwiftAlamofire
 import QuartzCore
 
+//TESTSING IT TOUT
+
 class TemperatureViewController: UIViewController {
 
     @IBOutlet var scrollingValueView:ScrollingValueView!
