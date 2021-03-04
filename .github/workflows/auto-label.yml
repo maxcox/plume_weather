@@ -1,0 +1,2 @@
+- name: Auto Label Action
+  uses: banyan/auto-label@1.2
