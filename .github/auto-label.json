@@ -1,7 +1,0 @@
-{
-  "rules": {
-    "bug": ["PlumeWeather/"],
-    "enhancement": ["PlumeWeather/PlumeWeather"],
-    "invalid": ["PlumeWeatherTests/"]
-  }
-}
