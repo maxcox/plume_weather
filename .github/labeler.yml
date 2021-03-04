@@ -1,8 +1,8 @@
-bug:
+"bug":
   - PlumeWeather/**/*
   
-enhancement:
+"enhancement":
   - PlumeWeather/PlumeWeather/**/*
   
-invalid:
+"invalid":
   - PlumeWeather/PlumeWeatherTests/**/*
